@@ -1,0 +1,21 @@
+# Binaries
+bin/
+dist/
+
+# Go modules
+vendor/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test coverage
+coverage.txt
+profile.out
