@@ -442,3 +442,152 @@ func (c *Client) CreateApplicationPassword(name string) (*ApplicationPassword, e
 
 	return &appPass, nil
 }
+
+// DeletePost 删除文章
+func (c *Client) DeletePost(id int, force bool) error {
+	path := fmt.Sprintf("/wp-json/wp/v2/posts/%d", id)
+	if force {
+		path += "?force=true"
+	}
+
+	resp, err := c.doRequest("DELETE", path, nil)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusNoContent {
+		body, _ := io.ReadAll(resp.Body)
+		return fmt.Errorf("删除文章失败: %s, 响应: %s", resp.Status, string(body))
+	}
+
+	return nil
+}
+
+// GetPostByID 根据ID获取文章详情
+func (c *Client) GetPostByID(id int) (*PostResponse, error) {
+	path := fmt.Sprintf("/wp-json/wp/v2/posts/%d", id)
+
+	resp, err := c.doRequest("GET", path, nil)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return nil, fmt.Errorf("获取文章详情失败: %s, 响应: %s", resp.Status, string(body))
+	}
+
+	var post PostResponse
+	if err := json.NewDecoder(resp.Body).Decode(&post); err != nil {
+		return nil, err
+	}
+
+	return &post, nil
+}
+
+// UpdatePost 更新文章
+func (c *Client) UpdatePost(id int, post *Post) (*PostResponse, error) {
+	postJSON, err := json.Marshal(post)
+	if err != nil {
+		return nil, err
+	}
+
+	path := fmt.Sprintf("/wp-json/wp/v2/posts/%d", id)
+	resp, err := c.doRequest("POST", path, bytes.NewReader(postJSON))
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return nil, fmt.Errorf("更新文章失败: %s, 响应: %s", resp.Status, string(body))
+	}
+
+	var postResp PostResponse
+	if err := json.NewDecoder(resp.Body).Decode(&postResp); err != nil {
+		return nil, err
+	}
+
+	return &postResp, nil
+}
+
+// DeleteCategory 删除分类
+func (c *Client) DeleteCategory(id int, force bool) error {
+	path := fmt.Sprintf("/wp-json/wp/v2/categories/%d", id)
+	if force {
+		path += "?force=true"
+	}
+
+	resp, err := c.doRequest("DELETE", path, nil)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusNoContent {
+		body, _ := io.ReadAll(resp.Body)
+		return fmt.Errorf("删除分类失败: %s, 响应: %s", resp.Status, string(body))
+	}
+
+	return nil
+}
+
+// CreateCategory 创建分类（已存在，添加文档注释）
+// func (c *Client) CreateCategory(name, description string) (*Category, error)
+
+// GetTags 获取标签列表
+func (c *Client) GetTags() ([]Tag, error) {
+	resp, err := c.doRequest("GET", "/wp-json/wp/v2/tags", nil)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return nil, fmt.Errorf("获取标签失败: %s, 响应: %s", resp.Status, string(body))
+	}
+
+	var tags []Tag
+	if err := json.NewDecoder(resp.Body).Decode(&tags); err != nil {
+		return nil, err
+	}
+
+	return tags, nil
+}
+
+// SearchPosts 搜索文章
+func (c *Client) SearchPosts(query string, page, perPage int) ([]PostResponse, error) {
+	path := fmt.Sprintf("/wp-json/wp/v2/posts?search=%s&page=%d&per_page=%d",
+		url.QueryEscape(query), page, perPage)
+
+	resp, err := c.doRequest("GET", path, nil)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return nil, fmt.Errorf("搜索文章失败: %s, 响应: %s", resp.Status, string(body))
+	}
+
+	var posts []PostResponse
+	if err := json.NewDecoder(resp.Body).Decode(&posts); err != nil {
+		return nil, err
+	}
+
+	return posts, nil
+}
+
+// Tag 结构体
+type Tag struct {
+	ID          int    `json:"id"`
+	Name        string `json:"name"`
+	Slug        string `json:"slug"`
+	Description string `json:"description"`
+	Count       int    `json:"count"`
+}

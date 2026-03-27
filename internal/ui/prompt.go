@@ -527,3 +527,8 @@ func PromptYesNo(question string) (bool, error) {
 
 	return strings.ToLower(result) == "y", nil
 }
+
+// Confirm 确认对话框（PromptYesNo的别名）
+func Confirm(question string) (bool, error) {
+	return PromptYesNo(question)
+}

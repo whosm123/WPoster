@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/yourusername/wposter/internal/wordpress"
+	"github.com/whosm123/WPoster/internal/wordpress"
 )
 
 // displayWidth 计算字符串在终端中的显示宽度

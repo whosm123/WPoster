@@ -1,4 +1,4 @@
-module github.com/yourusername/wposter
+module github.com/whosm123/WPoster
 
 go 1.21.0
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/yourusername/wposter/cmd"
+	"github.com/whosm123/WPoster/cmd"
 )
 
 func main() {

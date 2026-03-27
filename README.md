@@ -45,11 +45,16 @@ wposter.exe
 ### 主要功能
 
 1. **查看最近文章** - 显示最近的10篇文章（支持中文标题截断）
-2. **查看分类列表** - 显示站点所有分类
+2. **管理分类** - 管理站点所有分类
 3. **发布新文章** - 从Markdown文件发布文章
+<<<<<<< HEAD
 4. **退出程序**
 <img width="807" height="1056" alt="image" src="https://github.com/user-attachments/assets/70450d5b-9ae2-4027-8663-07ec042e98b7" />
 
+=======
+4. **管理历史文章** - 
+<img width="1035" height="1168" alt="image" src="https://github.com/user-attachments/assets/d70dc1a3-8259-45be-a2a7-fd5721091fa5" />
+>>>>>>> d686044 (修复滚动列表显示和分类删除功能)
 
 ### 发布文章流程
 
