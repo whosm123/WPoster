@@ -40,6 +40,7 @@ wposter.exe
 1. 选择登录方式（新建账户或使用已有账户）
 2. 输入WordPress站点URL
 3. 输入用户名/密码或应用密码
+<img width="893" height="371" alt="image" src="https://github.com/user-attachments/assets/c6f52a94-5b19-42a2-9fd6-76c922f7d805" />
 
 ### 主要功能
 
@@ -47,6 +48,7 @@ wposter.exe
 2. **查看分类列表** - 显示站点所有分类
 3. **发布新文章** - 从Markdown文件发布文章
 4. **退出程序**
+<img width="1035" height="1168" alt="image" src="https://github.com/user-attachments/assets/d70dc1a3-8259-45be-a2a7-fd5721091fa5" />
 
 ### 发布文章流程
 
@@ -55,6 +57,7 @@ wposter.exe
 3. 选择Markdown文件路径
 4. 选择文章状态（草稿/立即发布/待审核/私密）
 5. 自动转换Markdown为HTML并发布
+ 
 
 ## 配置
 所有凭据都在本地存储，且存储的是您输入或者根据您的用户名+密码创建的应用密码。
@@ -107,17 +110,17 @@ go test ./...
 
 ## 常见问题
 
-### Q: 文章发布成功但不显示在列表中？
-A: 已修复时间戳问题。确保使用最新版本，文章时间字段会自动设置为当前时间。
 
 ### Q: 中文标题显示不完整？
 A: 表格显示算法会自动截断过长的中文标题，在完整字符边界添加"..."。
 
 ### Q: 如何获取WordPress应用密码？
-A: 在WordPress后台：用户 → 编辑用户 → 应用密码 → 添加新应用密码。
+A: 您可以直接提供用户名和密码，WPoster会自动创建应用密码来访问RestAPI。
+您也可以自己创建应用密码：在WordPress后台：用户 → 编辑用户 → 应用密码 → 添加新应用密码。
+<img width="2559" height="979" alt="image" src="https://github.com/user-attachments/assets/a3007094-d89a-4583-ad20-b03d61f7afe2" />
 
 ### Q: 支持多个WordPress站点吗？
-A: 是的，支持多个站点和用户，配置自动管理。
+A: 是的，支持多个站点和用户，同一站点多个用户，配置自动管理。
 
 ## 贡献
 
@@ -141,4 +144,3 @@ Makari
 
 - [gomarkdown/markdown](https://github.com/gomarkdown/markdown) - Markdown解析器
 - [WordPress REST API](https://developer.wordpress.org/rest-api/) - WordPress API文档
-- 所有贡献者和用户
