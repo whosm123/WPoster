@@ -1,6 +1,6 @@
 # WPoster - WordPress文章远程管理CLI工具
 
-一个用Go编写的Windows命令行工具，用于远程管理和发布markdown格式的WordPress文章，支持中文内容、Markdown转换和交互式操作。
+一个用Go编写的Windows命令行工具，用于远程管理和发布markdown格式的WordPress文章及分类，支持中文内容、Markdown转换和交互式操作。
 
 ## 功能特性
 
@@ -48,7 +48,8 @@ wposter.exe
 2. **查看分类列表** - 显示站点所有分类
 3. **发布新文章** - 从Markdown文件发布文章
 4. **退出程序**
-<img width="1035" height="1168" alt="image" src="https://github.com/user-attachments/assets/d70dc1a3-8259-45be-a2a7-fd5721091fa5" />
+<img width="807" height="1056" alt="image" src="https://github.com/user-attachments/assets/70450d5b-9ae2-4027-8663-07ec042e98b7" />
+
 
 ### 发布文章流程
 
