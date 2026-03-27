@@ -1,7 +1,21 @@
 package main
 
-import "github.com/yourusername/wposter/cmd"
+import (
+	"fmt"
+	"os"
+
+	"github.com/yourusername/wposter/cmd"
+)
 
 func main() {
-	cmd.Execute()
+	app, err := cmd.NewApp()
+	if err != nil {
+		fmt.Printf("初始化失败: %v\n", err)
+		os.Exit(1)
+	}
+
+	if err := app.Run(); err != nil {
+		fmt.Printf("程序运行错误: %v\n", err)
+		os.Exit(1)
+	}
 }

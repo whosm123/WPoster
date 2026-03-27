@@ -1,4 +1,7 @@
 # Binaries
+*.exe
+*.exe~
+wposter
 bin/
 dist/
 
@@ -8,6 +11,8 @@ vendor/
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # OS
 .DS_Store
@@ -19,3 +24,14 @@ Thumbs.db
 # Test coverage
 coverage.txt
 profile.out
+
+# Test files
+test*.md
+*.test
+
+# User config (local)
+users.json
+.key
+
+# Build artifacts
+build/
