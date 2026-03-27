@@ -57,7 +57,8 @@ wposter.exe
 3. 选择Markdown文件路径
 4. 选择文章状态（草稿/立即发布/待审核/私密）
 5. 自动转换Markdown为HTML并发布
- 
+ <img width="888" height="960" alt="image" src="https://github.com/user-attachments/assets/751ae9f4-a673-46b8-98fa-654b816c5260" />
+
 
 ## 配置
 所有凭据都在本地存储，且存储的是您输入或者根据您的用户名+密码创建的应用密码。
